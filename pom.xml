@@ -4,7 +4,7 @@
 	<artifactId>ToolBox</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
-		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+		<project.build.sourceEncoding>Windows-1252</project.build.sourceEncoding>
 		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<build>

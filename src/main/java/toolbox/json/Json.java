@@ -7,7 +7,7 @@ import toolbox.*;
 
 
 /**
- * La classe {@link Json} est un ancÃªtre commun abstrait Ã  tous les Ã©lÃ©ments Json. Voir {@link "http://www.json.org/json-fr.html"}.
+ * La classe {@link Json} est un ancêtre commun abstrait à tous les éléments Json. Voir {@link "http://www.json.org/json-fr.html"}.
  * @author Ludovic WALLE
  */
 public abstract class Json {
@@ -23,8 +23,8 @@ public abstract class Json {
 
 
 	/**
-	 * SÃ©rialise cet Ã©lÃ©ment Json sans prÃ©sentation (indentation, ...).
-	 * @return SÃ©rialise l'Ã©lÃ©ment Json.
+	 * Sérialise cet élément Json sans présentation (indentation, ...).
+	 * @return Sérialise l'élément Json.
 	 */
 	public final String serialize() {
 		return serialize(null);
@@ -33,9 +33,9 @@ public abstract class Json {
 
 
 	/**
-	 * SÃ©rialise cet Ã©lÃ©ment Json.
-	 * @param indentation Indentation globale de prÃ©sentation de cet Ã©lÃ©ment Json, ou <code>null</code> pour sÃ©rialiser sans prÃ©sentation.
-	 * @return SÃ©rialise l'Ã©lÃ©ment Json.
+	 * Sérialise cet élément Json.
+	 * @param indentation Indentation globale de présentation de cet élément Json, ou <code>null</code> pour sérialiser sans présentation.
+	 * @return Sérialise l'élément Json.
 	 */
 	public abstract String serialize(String indentation);
 
@@ -51,13 +51,12 @@ public abstract class Json {
 
 
 	/**
-	 * Retourne une chaine correspondant Ã  la chaine indiquÃ©e mais oÃ¹ tous les caractÃ¨res <code>'</code>, <code>"</code>, <code>\\</code>, <code>></code>, <code>&lt;</code>, ou dont le code est
-	 * supÃ©rieur ou Ã©gal Ã  128, ou strictement infÃ©rieur Ã  32 sauf TAB, CR et LF on Ã©tÃ© remplacÃ©s par des <code>&#92;uXXXX</code>, ou <code>null</code> si la chaine indiquÃ©e est
-	 * <code>null</code>.<br>
-	 * Cela garantit une interprÃ©tation correcte par tous les navigateurs, configurÃ©s avec n'importe quel encodage qui soit un sur-ensemble de l'US-ASCII (ISO-8859-1, Windows-1252, UTF-8, ...).
-	 * @param string Chaine Ã  transformer (peut Ãªtre <code>null</code>).
-	 * @return Une chaine correspondant Ã  la chaine indiquÃ©e mais oÃ¹ tous les caractÃ¨res <code>'</code>, <code>"</code>, <code>&amp;</code>, <code>></code>, <code>&lt;</code>, ou dont le code est
-	 *         supÃ©rieur ou Ã©gal Ã  128, ou strictement infÃ©rieur Ã  32 sauf TAB, CR et LF on Ã©tÃ© remplacÃ©s par des <code>&#92;uXXXX</code>, ou <code>null</code> si la chaine indiquÃ©e est
+	 * Retourne une chaine correspondant à la chaine indiquée mais où tous les caractères <code>'</code>, <code>"</code>, <code>\\</code>, <code>></code>, <code>&lt;</code>, ou dont le code est
+	 * supérieur ou égal à 128, ou strictement inférieur à 32 sauf TAB, CR et LF on été remplacés par des <code>&#92;uXXXX</code>, ou <code>null</code> si la chaine indiquée est <code>null</code>.<br>
+	 * Cela garantit une interprétation correcte par tous les navigateurs, configurés avec n'importe quel encodage qui soit un sur-ensemble de l'US-ASCII (ISO-8859-1, Windows-1252, UTF-8, ...).
+	 * @param string Chaine à transformer (peut être <code>null</code>).
+	 * @return Une chaine correspondant à la chaine indiquée mais où tous les caractères <code>'</code>, <code>"</code>, <code>&amp;</code>, <code>></code>, <code>&lt;</code>, ou dont le code est
+	 *         supérieur ou égal à 128, ou strictement inférieur à 32 sauf TAB, CR et LF on été remplacés par des <code>&#92;uXXXX</code>, ou <code>null</code> si la chaine indiquée est
 	 *         <code>null</code>.
 	 */
 	protected static String encode(String string) {
@@ -102,10 +101,10 @@ public abstract class Json {
 
 
 	/**
-	 * Simule l'appel Ã  {@link Scanner#getMatchingPart(Pattern)} avec <code>\A"(?:\\([\\\/\"bfnrt])|\\u([0-9a-fA-F]{4})|([^\x01-\x1F\\\"]+))*"</code> comme expression rÃ©guliÃ¨re.<br>
-	 * Permet d'Ã©viter les {@link StackOverflowError} si la chaine Ã  parcourir est trop complexe.
-	 * @param scanner Chaine Ã  parcourir.
-	 * @return Le fragment correspondant Ã  une chaine json, ou <code>null</code>.
+	 * Simule l'appel à {@link Scanner#getMatchingPart(Pattern)} avec <code>\A"(?:\\([\\\/\"bfnrt])|\\u([0-9a-fA-F]{4})|([^\x01-\x1F\\\"]+))*"</code> comme expression régulière.<br>
+	 * Permet d'éviter les {@link StackOverflowError} si la chaine à parcourir est trop complexe.
+	 * @param scanner Chaine à parcourir.
+	 * @return Le fragment correspondant à une chaine json, ou <code>null</code>.
 	 */
 	private static String getMatchingPartForString(Scanner scanner) {
 		int initialIndex = scanner.getIndex();
@@ -129,9 +128,9 @@ public abstract class Json {
 
 
 	/**
-	 * Construit l'Ã©lÃ©ment Json correspondant Ã  la chaine indiquÃ©e.
-	 * @param scanner Element Json sÃ©rialisÃ© en cours de parsage.
-	 * @return L'Ã©lÃ©ment Json.
+	 * Construit l'élément Json correspondant à la chaine indiquée.
+	 * @param scanner Element Json sérialisé en cours de parsage.
+	 * @return L'élément Json.
 	 * @throws JsonException
 	 * @throws StringIndexOutOfBoundsException
 	 */
@@ -156,10 +155,10 @@ public abstract class Json {
 				for (;;) {
 					index = scanner.getIndex();
 					if (!((jsonName = parse(scanner)) instanceof JsonString)) {
-						throw new JsonException("Nom de propriÃ©tÃ© Json attendu: " + scanner.getFragment(index, 5, 5));
+						throw new JsonException("Nom de propriété Json attendu: " + scanner.getFragment(index, 5, 5));
 					}
 					if (jsonObject.has(((JsonString) jsonName).getValue())) {
-						throw new JsonException("Il a a plusieurs propriÃ©tÃ©s \"" + ((JsonString) jsonName).getValue() + "\" dans le mÃªme objet Json: " + scanner.getFragment(index, 5, 50));
+						throw new JsonException("Il a a plusieurs propriétés \"" + ((JsonString) jsonName).getValue() + "\" dans le même objet Json: " + scanner.getFragment(index, 5, 50));
 					}
 					scanner.skipWhitespaces();
 					if (scanner.currentCharIsNoneOf(':')) {
@@ -268,9 +267,9 @@ public abstract class Json {
 
 
 	/**
-	 * Construit l'Ã©lÃ©ment Json correspondant Ã  la chaine indiquÃ©e.
-	 * @param string Ã‰lÃ©ment Json sÃ©rialisÃ©.
-	 * @return L'Ã©lÃ©ment Json.
+	 * Construit l'élément Json correspondant à la chaine indiquée.
+	 * @param string Élément Json sérialisé.
+	 * @return L'élément Json.
 	 * @throws JsonException
 	 */
 	public static Json parse(String string) throws JsonException {
@@ -287,7 +286,7 @@ public abstract class Json {
 			} else {
 				json = parse(scanner);
 				if (scanner.getCharsToParseCount() > 0) {
-					throw new JsonException("CaractÃ¨res non attendus: " + scanner.getFragment(0, 10));
+					throw new JsonException("Caractères non attendus: " + scanner.getFragment(0, 10));
 				}
 				return json;
 			}
@@ -297,21 +296,21 @@ public abstract class Json {
 
 
 	/**
-	 * ModÃ¨le de syntaxe des boolÃ©ens.
+	 * Modèle de syntaxe des booléens.
 	 */
 	private static final Pattern BOOLEAN_PATTERN = Pattern.compile("\\A(true|false)");
 
 
 
 	/**
-	 * ModÃ¨le de syntaxe des fragments de chaines.
+	 * Modèle de syntaxe des fragments de chaines.
 	 */
 	public static final Pattern ENCODING_PATTERN = Pattern.compile("\\A(?:\\\\([\\\\\\/\\\"bfnrt])|\\\\u([0-9a-fA-F]{4})|([^\\x01-\\x1F\\\\\\\"]+))");
 
 
 
 	/**
-	 * Chaine utilisÃ©e pour chaque niveau d'indentation.
+	 * Chaine utilisée pour chaque niveau d'indentation.
 	 */
 	public static final String INDENTATION = "\t";
 
@@ -325,21 +324,21 @@ public abstract class Json {
 
 
 	/**
-	 * ModÃ¨le de syntaxe des boolÃ©ens.
+	 * Modèle de syntaxe des booléens.
 	 */
 	private static final Pattern NULL_PATTERN = Pattern.compile("\\A(null)");
 
 
 
 	/**
-	 * ModÃ¨le de syntaxe des nombres.
+	 * Modèle de syntaxe des nombres.
 	 */
 	private static final Pattern NUMBER_PATTERN = Pattern.compile("\\A(-?(?:0|[1-9][0-9]*)(?:\\.[0-9]+)?(?:[eE][-+]?[0-9]+)?)");
 
 
 
 	/**
-	 * ModÃ¨le de syntaxe des fragments de chaines.
+	 * Modèle de syntaxe des fragments de chaines.
 	 */
 	public static final Pattern STRING_FRAGMENT_PATTERN = Pattern.compile("\\A(\\\\[\\\\\\/\\\"bfnrt]|\\\\u[0-9a-fA-F]{4}|[^\\x01-\\x1F\\\\\\\"]+)");
 
