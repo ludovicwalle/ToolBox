@@ -316,7 +316,8 @@ public class Enterprise<M extends Mission> extends Thread {
 
 	/**
 	 * Teste si l'entreprise a fermé.<br>
-	 * L'entreprise ferme si toutes les missions ont été effectuées, ou si il y eu une exception ou une interruption explicite par {@link Enterprise#forbidForeverNewMissionsStart()}.
+	 * L'entreprise ferme si toutes les missions ont été effectuées, ou si il y eu une exception ou une interruption explicite par {@link Enterprise#forbidForeverNewMissionsStart()}.<br>
+	 * Il est possible que l'entreprise ne soit pas encore déclarée comme fermée bien que toutes les missions aient été effectuées.
 	 * @return <code>true</code> si l'entreprise a fermé, <code>false</code> sinon.
 	 */
 	public final boolean hasClosedDown() {
@@ -406,6 +407,9 @@ public class Enterprise<M extends Mission> extends Thread {
 				remainingWorker.join();
 			}
 			closedDown = true;
+			synchronized (enterpriseLock) {
+				enterpriseLock.notifyAll();
+			}
 		} catch (Throwable exception) {
 			collectExceptions(exception);
 		}
