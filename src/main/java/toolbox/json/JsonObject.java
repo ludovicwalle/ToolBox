@@ -110,7 +110,7 @@ public class JsonObject extends JsonContainer implements Iterable<Entry<String, 
 	 * @param name Nom Json (ne doit pas être <code>null</code>).
 	 * @return La valeur de la paire coupée.
 	 */
-	public Integer cutInteger(String name) {
+	public Long cutInteger(String name) {
 		return cutInteger(name, null);
 	}
 
@@ -122,8 +122,8 @@ public class JsonObject extends JsonContainer implements Iterable<Entry<String, 
 	 * @param option Indication de valeur obligatoire.
 	 * @return La valeur de la paire coupée.
 	 */
-	public Integer cutInteger(String name, Option option) {
-		Integer value;
+	public Long cutInteger(String name, Option option) {
+		Long value;
 
 		value = getInteger(name, option);
 		remove(name);
@@ -364,7 +364,7 @@ public class JsonObject extends JsonContainer implements Iterable<Entry<String, 
 	 * @param name Nom de la valeur à extraire.
 	 * @return La valeur.
 	 */
-	public Integer getInteger(String name) {
+	public Long getInteger(String name) {
 		return getInteger(name, null);
 	}
 
@@ -376,11 +376,11 @@ public class JsonObject extends JsonContainer implements Iterable<Entry<String, 
 	 * @param option Indication de valeur obligatoire.
 	 * @return La valeur.
 	 */
-	public Integer getInteger(String name, Option option) {
+	public Long getInteger(String name, Option option) {
 		Number number;
 
 		number = getNumber(name, option);
-		return (number == null) ? null : number.intValue();
+		return (number == null) ? null : number.longValue();
 	}
 
 

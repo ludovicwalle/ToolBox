@@ -3,7 +3,7 @@ package toolbox.json;
 
 
 /**
- * La classe {@link JsonContainer} .
+ * La classe {@link JsonContainer} est un ancêtre commun abstrait à tous les éléments Json non atomiques (objets, tableaux).
  * @author Ludovic WALLE
  */
 public abstract class JsonContainer extends Json {

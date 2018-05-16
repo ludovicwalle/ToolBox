@@ -241,7 +241,7 @@ public abstract class Json {
 						break;
 					}
 				} else if (matcher.group(2) != null) {
-					builder.append((char) Integer.parseInt(matcher.group(2), 16));
+					builder.append((char) Long.parseLong(matcher.group(2), 16));
 				} else if (matcher.group(3) != null) {
 					builder.append(matcher.group(3));
 				} else {
@@ -252,7 +252,7 @@ public abstract class Json {
 
 		} else if ((string = scanner.getMatchingPart(NUMBER_PATTERN)) != null) {
 			if (INTEGER_PATTERN.matcher(string).matches()) {
-				return new JsonNumber(Integer.valueOf(string));
+				return new JsonNumber(Long.valueOf(string));
 			} else {
 				return new JsonNumber(Double.valueOf(string));
 			}

@@ -82,6 +82,19 @@ public class JsonArray extends JsonContainer implements Iterable<Json> {
 
 
 	/**
+	 * @param numbers Nombres.
+	 */
+	public JsonArray(long... numbers) {
+		if (numbers != null) {
+			for (long number : numbers) {
+				this.jsons.add(new JsonNumber(number));
+			}
+		}
+	}
+
+
+
+	/**
 	 * @param strings Chaines.
 	 */
 	public JsonArray(String... strings) {
@@ -213,11 +226,11 @@ public class JsonArray extends JsonContainer implements Iterable<Json> {
 	 * @throws ArrayIndexOutOfBoundsException Si l'index est en dehors du tableau.
 	 * @throws ClassCastException Si la valeur n'est pas un nombre.
 	 */
-	public Integer cutInteger(int index) {
+	public Long cutInteger(int index) {
 		JsonNumber element;
 
 		element = (JsonNumber) jsons.remove(index);
-		return (element != null) ? element.getValue().intValue() : null;
+		return (element != null) ? element.getValue().longValue() : null;
 	}
 
 
@@ -357,11 +370,11 @@ public class JsonArray extends JsonContainer implements Iterable<Json> {
 	 * @throws ArrayIndexOutOfBoundsException Si l'index est en dehors du tableau.
 	 * @throws ClassCastException Si la valeur n'est pas un nombre.
 	 */
-	public Integer getInteger(int index) {
+	public Long getInteger(int index) {
 		JsonNumber element;
 
 		element = (JsonNumber) jsons.get(index);
-		return (element != null) ? element.getValue().intValue() : null;
+		return (element != null) ? element.getValue().longValue() : null;
 	}
 
 
